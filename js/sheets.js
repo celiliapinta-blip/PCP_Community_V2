@@ -29,7 +29,7 @@ async function cargarRanking() {
 
     let jugadores = data.slice(1).map(r => ({
         nombre: r[0],
-        puntos: Number(r[1]),
+        puntos: parseFloat(r[1]) || 0,
         nivel: r[2]
     }));
 
