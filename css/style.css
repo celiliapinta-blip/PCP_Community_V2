@@ -108,3 +108,49 @@ footer {
     background: #111827;
     color: #94a3b8;
 }
+#top3-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 2rem;
+}
+
+.card h4 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #cbd5e1;
+}
+
+/* 🥇 Oro */
+.card:nth-child(1) {
+    border: 2px solid gold;
+}
+
+/* 🥈 Plata */
+.card:nth-child(2) {
+    border: 2px solid silver;
+}
+
+/* 🥉 Bronce */
+.card:nth-child(3) {
+    border: 2px solid #cd7f32;
+}
