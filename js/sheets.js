@@ -1,36 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("sheets.js cargado correctamente");
+    console.log("JS funcionando");
 
     const jugadores = [
-        { nombre: "Jugador 1", puntos: 1200, nivel: "Oro" },
-        { nombre: "Jugador 2", puntos: 900, nivel: "Plata" },
-        { nombre: "Jugador 3", puntos: 700, nivel: "Bronce" },
-        { nombre: "Jugador 4", puntos: 500, nivel: "Bronce" }
+        { nombre: "Juan", puntos: 1000, nivel: "Oro" },
+        { nombre: "Ana", puntos: 800, nivel: "Plata" },
+        { nombre: "Luis", puntos: 600, nivel: "Bronce" }
     ];
 
-    const ordenados = jugadores
-        .filter(j => j.nombre && !isNaN(j.puntos))
-        .sort((a, b) => b.puntos - a.puntos);
-
-    // 🏆 TOP 3
     const top3 = document.getElementById("top3-container");
+    const tbody = document.querySelector("#tablaRanking tbody");
 
     if (top3) {
-        top3.innerHTML = ordenados.slice(0, 3).map((j, i) => `
-            <div class="card">
-                <h3>${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</h3>
-                <h4>${j.nombre}</h4>
-                <p>${j.puntos} pts</p>
+        top3.innerHTML = jugadores.map((j, i) => `
+            <div>
+                ${i + 1}. ${j.nombre} - ${j.puntos}
             </div>
         `).join("");
     }
 
-    // 📊 RANKING
-    const tbody = document.querySelector("#tablaRanking tbody");
-
     if (tbody) {
-        tbody.innerHTML = ordenados.map((j, i) => `
+        tbody.innerHTML = jugadores.map((j, i) => `
             <tr>
                 <td>${i + 1}</td>
                 <td>${j.nombre}</td>
