@@ -154,3 +154,43 @@ footer {
 .card:nth-child(3) {
     border: 2px solid #cd7f32;
 }
+#tablaRanking {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+#tablaRanking thead {
+    background: linear-gradient(90deg, #00c853, #00e676);
+    color: black;
+}
+
+#tablaRanking th,
+#tablaRanking td {
+    padding: 14px;
+    text-align: left;
+}
+
+#tablaRanking tbody tr {
+    transition: 0.2s ease;
+}
+
+#tablaRanking tbody tr:hover {
+    background: #1e293b;
+    transform: scale(1.01);
+}
+
+#tablaRanking tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.03);
+}
+
+input#buscarJugador {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
