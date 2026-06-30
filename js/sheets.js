@@ -7,13 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
         { nombre: "Jugador 4", puntos: 500, nivel: "Bronce" }
     ];
 
-    // Ordenar jugadores por puntos
     const ordenados = jugadores
-        .filter(j => j.nombre && j.puntos)
+        .filter(j => j.nombre && !isNaN(j.puntos))
         .sort((a, b) => b.puntos - a.puntos);
 
-    // TOP 3
     const top3 = document.getElementById("top3-container");
+
+    // 🔴 SEGURIDAD: verificar que exista el elemento
+    if (!top3) {
+        console.error("No existe #top3-container en el HTML");
+        return;
+    }
 
     top3.innerHTML = ordenados.slice(0, 3).map((j, i) => `
         <div class="card">
