@@ -1,41 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-    const jugadores = [
-        { nombre: "Jugador 1", puntos: 1200, nivel: "Oro" },
-        { nombre: "Jugador 2", puntos: 900, nivel: "Plata" },
-        { nombre: "Jugador 3", puntos: 700, nivel: "Bronce" },
-        { nombre: "Jugador 4", puntos: 500, nivel: "Bronce" }
-    ];
+    // 🔴 PON AQUÍ TU SHEET ID
+    const SHEET_ID = "1L7NsIFSsWGr8cpDii5bAWUf5QQoaImf2ikDAUpemP6U";
+    const SHEET_NAME = "Ranking";
 
-    const ordenados = jugadores
-        .filter(j => j.nombre && !isNaN(j.puntos))
-        .sort((a, b) => b.puntos - a.puntos);
+    const url = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
-    // 🏆 TOP 3
-    const top3 = document.getElementById("top3-container");
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
 
-    if (top3) {
-        top3.innerHTML = ordenados.slice(0, 3).map((j, i) => `
-            <div class="card">
-                <h3>${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</h3>
-                <h4>${j.nombre}</h4>
-                <p>${j.puntos} pts</p>
-            </div>
-        `).join("");
-    }
+        const jugadores = data.map(j => ({
+            nombre: j.nombre,
+            puntos: Number(j.puntos),
+            nivel: j.nivel
+        }));
 
-    // 📊 RANKING TABLA
-    const tbody = document.querySelector("#tablaRanking tbody");
+        const ordenados = jugadores
+            .filter(j => j.nombre && !isNaN(j.puntos))
+            .sort((a, b) => b.puntos - a.puntos);
 
-    if (tbody) {
-        tbody.innerHTML = ordenados.map((j, i) => `
-            <tr>
-                <td>${i + 1}</td>
-                <td>${j.nombre}</td>
-                <td>${j.puntos}</td>
-                <td>${j.nivel}</td>
-            </tr>
-        `).join("");
+        // 🏆 TOP 3
+        const top3 = document.getElementById("top3-container");
+
+        if (top3) {
+            top3.innerHTML = ordenados.slice(0, 3).map((j, i) => `
+                <div class="card">
+                    <h3>${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</h3>
+                    <h4>${j.nombre}</h4>
+                    <p>${j.puntos} pts</p>
+                </div>
+            `).join("");
+        }
+
+        // 📊 RANKING
+        const tbody = document.querySelector("#tablaRanking tbody");
+
+        if (tbody) {
+            tbody.innerHTML = ordenados.map((j, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${j.nombre}</td>
+                    <td>${j.puntos}</td>
+                    <td>${j.nivel}</td>
+                </tr>
+            `).join("");
+        }
+
+    } catch (error) {
+        console.error("Error cargando Google Sheets:", error);
     }
 
 });
