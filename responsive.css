@@ -1,0 +1,47 @@
+/* ===========================
+   PCP Community - Responsive
+   =========================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        width: 95%;
+    }
+
+    #top3-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    #buscarJugador {
+        font-size: 14px;
+    }
+
+}
