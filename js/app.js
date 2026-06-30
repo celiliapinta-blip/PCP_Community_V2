@@ -1,30 +1,35 @@
-/* ===========================
-   PCP Community - app.js
-   =========================== */
-
-// Buscar jugador en la tabla
 document.addEventListener("DOMContentLoaded", () => {
 
-    const input = document.getElementById("buscarJugador");
-    const table = document.getElementById("tablaRanking").getElementsByTagName("tbody")[0];
+    console.log("Proyecto iniciado correctamente");
 
-    input.addEventListener("keyup", function () {
-        const filtro = input.value.toLowerCase();
-        const filas = table.getElementsByTagName("tr");
+    const jugadores = [
+        { nombre: "Jugador 1", puntos: 1000 },
+        { nombre: "Jugador 2", puntos: 800 },
+        { nombre: "Jugador 3", puntos: 600 },
+        { nombre: "Jugador 4", puntos: 400 }
+    ];
 
-        for (let i = 0; i < filas.length; i++) {
-            let nombre = filas[i].getElementsByTagName("td")[1];
+    const ordenados = jugadores.sort((a, b) => b.puntos - a.puntos);
 
-            if (nombre) {
-                let texto = nombre.textContent || nombre.innerText;
+    // 🏆 TOP 3
+    const top3 = document.getElementById("top3");
 
-                if (texto.toLowerCase().indexOf(filtro) > -1) {
-                    filas[i].style.display = "";
-                } else {
-                    filas[i].style.display = "none";
-                }
-            }
-        }
-    });
+    top3.innerHTML = ordenados.slice(0, 3).map((j, i) => `
+        <div>
+            ${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}
+            ${j.nombre} - ${j.puntos}
+        </div>
+    `).join("");
+
+    // 📊 RANKING
+    const tbody = document.querySelector("#rankingTable tbody");
+
+    tbody.innerHTML = ordenados.map((j, i) => `
+        <tr>
+            <td>${i + 1}</td>
+            <td>${j.nombre}</td>
+            <td>${j.puntos}</td>
+        </tr>
+    `).join("");
 
 });
