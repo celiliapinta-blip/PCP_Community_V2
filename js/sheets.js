@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const jugadores = [
         { nombre: "Juan", puntos: 1000, nivel: "Oro" },
         { nombre: "Ana", puntos: 800, nivel: "Plata" },
-        { nombre: "Luis", puntos: 600, nivel: "Bronce" }
+        { nombre: "Luis", puntos: 2000, nivel: "Bronce" }
     ];
 
     const top3 = document.getElementById("top3-container");
