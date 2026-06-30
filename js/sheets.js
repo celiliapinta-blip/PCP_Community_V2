@@ -4,7 +4,7 @@
    =========================== */
 
 // 🔗 ID de tu Google Sheet
-const SHEET_ID = "1L7NsIFSsWGr8cpDii5bAWUf5QQoaImf2ikDAUpemP6U";
+const SHEET_ID = "";
 
 // URL para leer datos públicos
 const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=`;
