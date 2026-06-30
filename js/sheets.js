@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const SHEET_ID = "document.addEventListener("DOMContentLoaded", async () => {
 
-    const SHEET_ID = "PEGA_AQUI_TU_ID";
+    const SHEET_ID = "1L7NsIFSsWGr8cpDii5bAWUf5QQoaImf2ikDAUpemP6U";
     const SHEET_NAME = "Sheet1"; // o el nombre de tu pestaña
 
     const URL = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
